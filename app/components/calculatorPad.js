@@ -1,12 +1,8 @@
 import React, {
   View,
   ListView,
-  Text,
   Image,
-  TouchableHighlight,
-  Component,
   StyleSheet,
-  Platform,
   TouchableNativeFeedback
 } from 'react-native'
 
@@ -34,35 +30,13 @@ var CalculatorPad = React.createClass({
     return (
       <TouchableNativeFeedback>
           <View style={styles.row}>
-            <Image source={numbers[rowID]} style={styles.calcButton} />
+            <Image
+              source={numbers[rowID]}
+              style={styles.calcButton}
+            />
           </View>
       </TouchableNativeFeedback>
     )
-  },
-
-  numPadButton(number) {
-    var TouchableElement = TouchableHighlight;
-    if (Platform.OS === 'android') {
-      TouchableElement = TouchableNativeFeedback;
-    }
-    return (
-    <TouchableElement key={number}>
-      <View style={styles.button}>
-        <Text style={styles.buttonText}>
-          {number}
-        </Text>
-      </View>
-    </TouchableElement>
-    )
-  },
-
-  generateAllButtons() {
-    let i;
-    let buttons = [];
-    for (i = 0; i < 10; i++) {
-      buttons.push(this.numPadButton(i));
-    }
-    return buttons;
   }
 
 });
