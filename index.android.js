@@ -1,19 +1,5 @@
-import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, { AppRegistry } from 'react-native';
 
-import App from './app/components/app';
+import App from './app/containers/index';
 
-class StatefulCalculator extends Component {
-  render() {
-    return (
-      <App />
-    );
-  }
-}
-
-AppRegistry.registerComponent('StatefulCalculator', () => StatefulCalculator);
+AppRegistry.registerComponent('StatefulCalculator', () => App);

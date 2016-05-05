@@ -6,18 +6,17 @@ import React, {
   TouchableNativeFeedback
 } from 'react-native'
 
-
-var CalculatorPad = React.createClass({
-
+var CalculatorOperations = React.createClass({
+  
   getInitialState() {
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
-      dataSource: ds.cloneWithRows(numbers),
+      dataSource: ds.cloneWithRows(operations)
     };
   },
-
+  
   render() {
-    return(
+    return (
       <ListView
         contentContainerStyle={styles.list}
         dataSource={this.state.dataSource}
@@ -29,16 +28,16 @@ var CalculatorPad = React.createClass({
   _renderRow(rowData, sectionID, rowID) {
     return (
       <TouchableNativeFeedback>
-          <View style={styles.row}>
-            <Image
-              source={numbers[rowID]}
-              style={styles.calcButton}
-            />
-          </View>
+        <View style={styles.row}>
+          <Image
+            source={operations[rowID]}
+            style={styles.opButton}
+          />
+        </View>
       </TouchableNativeFeedback>
     )
   }
-
+  
 });
 
 const styles = StyleSheet.create({
@@ -54,29 +53,26 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 10,
     width: 100,
-    height: 100,
+    height: 64,
     alignItems: 'center',
     borderRadius: 5,
     borderColor: '#CCC'
   },
 
-  calcButton : {
+  opButton : {
     height: 64,
     width: 64
   }
+
 });
 
-var numbers = [
-  require('../images/number-0.png'),
-  require('../images/number-1.png'),
-  require('../images/number-2.png'),
-  require('../images/number-3.png'),
-  require('../images/number-4.png'),
-  require('../images/number-5.png'),
-  require('../images/number-6.png'),
-  require('../images/number-7.png'),
-  require('../images/number-8.png'),
-  require('../images/number-9.png')
+var operations = [
+  require('../images/plus.png'),
+  require('../images/minus.png'),
+  require('../images/multiply.png'),
+  require('../images/division.png'),
+  require('../images/equals.png'),
+  require('../images/clear.png')
 ];
 
-export default CalculatorPad
+export default CalculatorOperations
