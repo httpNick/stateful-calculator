@@ -3,16 +3,21 @@ import React, {
   ListView,
   Image,
   StyleSheet,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
+  Component
 } from 'react-native'
+import { TouchWithFeedback } from './touchWithFeedback';
+
+var TouchButton = TouchWithFeedback();
 
 var CalculatorNumbers = React.createClass({
 
   getInitialState() {
+    console.log(this.props);
     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
       dataSource: ds.cloneWithRows(numbers)
-    };
+    }
   },
 
   render() {
@@ -26,15 +31,19 @@ var CalculatorNumbers = React.createClass({
   },
 
   _renderRow(rowData, sectionID, rowID) {
+
     return (
-      <TouchableNativeFeedback>
-          <View style={styles.row}>
+      <TouchButton
+        onPress={() => this.props.onNumberPress(rowID)}
+      >
+          <View
+            style={styles.row}>
             <Image
               source={numbers[rowID]}
               style={styles.calcButton}
             />
           </View>
-      </TouchableNativeFeedback>
+      </TouchButton>
     )
   }
 
@@ -65,7 +74,7 @@ const styles = StyleSheet.create({
   }
 });
 
-var numbers = [
+const numbers = [
   require('../images/number-0.png'),
   require('../images/number-1.png'),
   require('../images/number-2.png'),

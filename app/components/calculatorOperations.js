@@ -6,6 +6,10 @@ import React, {
   TouchableNativeFeedback
 } from 'react-native'
 
+import { TouchWithFeedback } from './touchWithFeedback';
+
+var TouchButton = TouchWithFeedback();
+
 var CalculatorOperations = React.createClass({
   
   getInitialState() {
@@ -27,14 +31,14 @@ var CalculatorOperations = React.createClass({
 
   _renderRow(rowData, sectionID, rowID) {
     return (
-      <TouchableNativeFeedback>
+      <TouchButton>
         <View style={styles.row}>
           <Image
             source={operations[rowID]}
             style={styles.opButton}
           />
         </View>
-      </TouchableNativeFeedback>
+      </TouchButton>
     )
   }
   

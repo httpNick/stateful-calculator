@@ -9,7 +9,7 @@ var CalculatorScreen = React.createClass({
     return (
       <View>
         <Text style={styles.screenLabel}>
-          Hello, Calculator
+          {this.props.screenValues}
         </Text>
       </View>
     )
@@ -19,6 +19,7 @@ var CalculatorScreen = React.createClass({
 const styles = StyleSheet.create({
 
   screenLabel : {
+    marginTop: 15,
     height: 50,
     fontSize : 30
   }

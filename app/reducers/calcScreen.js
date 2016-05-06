@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export default function calcScreen(state = initialState, action) {
-
+  
   switch(action.type){
 
     case types.NUMBER_PRESS:
