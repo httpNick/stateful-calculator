@@ -12,36 +12,32 @@ var TouchButton = TouchWithFeedback();
 
 var CalculatorOperations = React.createClass({
   
-  getInitialState() {
-    let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    return {
-      dataSource: ds.cloneWithRows(operations)
-    };
-  },
-  
   render() {
     return (
-      <ListView
-        contentContainerStyle={styles.list}
-        dataSource={this.state.dataSource}
-        renderRow={this._renderRow}
-      />
+      <View style={styles.list}>
+        {this._singleOperationButton(require('../images/plus.png'), () => console.log('hi'))}
+        {this._singleOperationButton(require('../images/minus.png'), () => {console.log('hi')})}
+        {this._singleOperationButton(require('../images/multiply.png'), () => {console.log('hi')})}
+        {this._singleOperationButton(require('../images/division.png'), () => {console.log('hi')})}
+        {this._singleOperationButton(require('../images/equals.png'), () => {console.log('hi')})}
+        {this._singleOperationButton(require('../images/clear.png'), () => this.props.clearScreen())}
+      </View>
     )
   },
 
-  _renderRow(rowData, sectionID, rowID) {
+  _singleOperationButton(image, buttonOnClick) {
     return (
-      <TouchButton>
+      <TouchButton onPress={buttonOnClick}>
         <View style={styles.row}>
           <Image
-            source={operations[rowID]}
+            source={image}
             style={styles.opButton}
           />
         </View>
       </TouchButton>
     )
   }
-  
+
 });
 
 const styles = StyleSheet.create({
@@ -69,14 +65,5 @@ const styles = StyleSheet.create({
   }
 
 });
-
-var operations = [
-  require('../images/plus.png'),
-  require('../images/minus.png'),
-  require('../images/multiply.png'),
-  require('../images/division.png'),
-  require('../images/equals.png'),
-  require('../images/clear.png')
-];
 
 export default CalculatorOperations

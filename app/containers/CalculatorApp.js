@@ -25,7 +25,9 @@ class CalculatorApp extends Component {
         <CalculatorScreen
           screenValues = { state.screenObjects }
         />
-        <CalculatorOperations />
+        <CalculatorOperations
+          clearScreen = { actions.clearScreen }
+        />
         <CalculatorNumbers
           onNumberPress = { actions.userNumberInput }
         />

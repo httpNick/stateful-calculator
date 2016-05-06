@@ -6,3 +6,9 @@ export function userNumberInput(numberPressed) {
     type: types.NUMBER_PRESS
   };
 }
+
+export function clearScreen() {
+  return {
+    type: types.CLEAR_SCREEN
+  }
+}

@@ -1,1 +1,2 @@
 export const NUMBER_PRESS = 'NUMBER_PRESS';
+export const CLEAR_SCREEN = 'CLEAR_SCREEN';

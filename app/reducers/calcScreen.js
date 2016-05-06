@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export default function calcScreen(state = initialState, action) {
-  
+
   switch(action.type){
 
     case types.NUMBER_PRESS:
@@ -17,6 +17,11 @@ export default function calcScreen(state = initialState, action) {
           ...state.screenObjects,
           action.number
         ]
+      });
+
+    case types.CLEAR_SCREEN:
+      return Object.assign({}, state, {
+        screenObjects: []
       });
 
     default:
